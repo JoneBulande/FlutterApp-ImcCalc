@@ -44,103 +44,112 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
               children: [
                 Expanded(
                   child: CartaoPadrao(
-                      aoPressionar: () {
-                        setState(() {
-                          sexoSelecionado = Sexo.masculono;
-                        });
-                      },
-                      cor: sexoSelecionado == Sexo.masculono
-                          ? kCorAtivaCartaoPadrao
-                          : kCorInativaCartaoPadrao,
-                      filhoCartao:
-                          ConteudoIcone(icone: Icons.male, sexo: 'Masculino')),
+                    aoPressionar: () {
+                      setState(() {
+                        sexoSelecionado = Sexo.masculono;
+                      });
+                    },
+                    cor: sexoSelecionado == Sexo.masculono
+                        ? kCorAtivaCartaoPadrao
+                        : kCorInativaCartaoPadrao,
+                    filhoCartao: ConteudoIcone(
+                      icone: Icons.male,
+                      sexo: 'Masculino',
+                    ),
+                  ),
                 ),
                 Expanded(
-                    child: CartaoPadrao(
-                        aoPressionar: () {
-                          setState(() {
-                            sexoSelecionado = Sexo.feminino;
-                          });
-                        },
-                        cor: sexoSelecionado == Sexo.feminino
-                            ? kCorAtivaCartaoPadrao
-                            : kCorInativaCartaoPadrao,
-                        filhoCartao: ConteudoIcone(
-                            icone: Icons.female, sexo: 'Feminino'))),
+                  child: CartaoPadrao(
+                    aoPressionar: () {
+                      setState(() {
+                        sexoSelecionado = Sexo.feminino;
+                      });
+                    },
+                    cor: sexoSelecionado == Sexo.feminino
+                        ? kCorAtivaCartaoPadrao
+                        : kCorInativaCartaoPadrao,
+                    filhoCartao: ConteudoIcone(
+                      icone: Icons.female,
+                      sexo: 'Feminino',
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
           Expanded(
             child: CartaoPadrao(
-                aoPressionar: () {
-                  setState(() {
-                    sexoSelecionado = Sexo.feminino;
-                  });
-                },
-                cor: kCorAtivaCartaoPadrao,
-                filhoCartao: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text('Altura', style: kDescricaoTextStyle),
-                    Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.baseline,
-                        textBaseline: TextBaseline.alphabetic,
-                        children: [
-                          Text(altura.toString(), style: kNumeroTextStyle),
-                          Text('cm', style: kDescricaoTextStyle)
-                        ]),
-                    Slider(
-                      activeColor: kCorContainerInferior,
-                      inactiveColor: kBackgroundColor,
-                      onChanged: (double novoValor) {
-                        setState(() {
-                          altura = novoValor.round();
-                        });
-                      },
-                      value: altura.toDouble(),
-                      min: 120,
-                      max: 220,
-                    ),
-                  ],
-                )),
+              aoPressionar: () {},
+              cor: kCorAtivaCartaoPadrao,
+              filhoCartao: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text('Altura', style: kDescricaoTextStyle),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    textBaseline: TextBaseline.alphabetic,
+                    children: [
+                      Text(altura.toString(), style: kNumeroTextStyle),
+                      Text('cm', style: kDescricaoTextStyle)
+                    ],
+                  ),
+                  Slider(
+                    activeColor: kCorContainerInferior,
+                    inactiveColor: kBackgroundColor,
+                    onChanged: (double novoValor) {
+                      setState(() {
+                        altura = novoValor.round();
+                      });
+                    },
+                    value: altura.toDouble(),
+                    min: 120,
+                    max: 220,
+                  ),
+                ],
+              ),
+            ),
           ),
           Expanded(
             child: Row(
               children: [
                 Expanded(
                   child: CartaoPadrao(
-                      cor: kCorAtivaCartaoPadrao,
-                      filhoCartao: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text('Peso', style: kDescricaoTextStyle),
-                          Text(peso.toString(), style: kNumeroTextStyle),
-                          Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                BotaoAredondado(
-                                    icone: Icons.remove,
-                                    aoPressionar: () {
-                                      setState(() {
-                                        if (peso > 0) {
-                                          peso--;
-                                        } else {
-                                          peso = 0;
-                                        }
-                                      });
-                                    }),
-                                SizedBox(width: 10.0),
-                                BotaoAredondado(
-                                    icone: Icons.add,
-                                    aoPressionar: () {
-                                      setState(() {
-                                        peso++;
-                                      });
-                                    }),
-                              ])
-                        ],
-                      )),
+                    cor: kCorAtivaCartaoPadrao,
+                    filhoCartao: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text('Peso', style: kDescricaoTextStyle),
+                        Text(peso.toString(), style: kNumeroTextStyle),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            BotaoAredondado(
+                              icone: Icons.remove,
+                              aoPressionar: () {
+                                setState(() {
+                                  if (peso > 0) {
+                                    peso--;
+                                  } else {
+                                    peso = 0;
+                                  }
+                                });
+                              },
+                            ),
+                            SizedBox(width: 10.0),
+                            BotaoAredondado(
+                              icone: Icons.add,
+                              aoPressionar: () {
+                                setState(() {
+                                  peso++;
+                                });
+                              },
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
                 Expanded(
                   child: CartaoPadrao(
@@ -151,28 +160,31 @@ class _TelaPrincipalState extends State<TelaPrincipal> {
                         Text('Idade', style: kDescricaoTextStyle),
                         Text(idade.toString(), style: kNumeroTextStyle),
                         Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              BotaoAredondado(
-                                  icone: Icons.remove,
-                                  aoPressionar: () {
-                                    setState(() {
-                                      if (idade > 0) {
-                                        idade--;
-                                      } else {
-                                        idade = 0;
-                                      }
-                                    });
-                                  }),
-                              SizedBox(width: 10.0),
-                              BotaoAredondado(
-                                  icone: Icons.add,
-                                  aoPressionar: () {
-                                    setState(() {
-                                      idade++;
-                                    });
-                                  }),
-                            ])
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            BotaoAredondado(
+                              icone: Icons.remove,
+                              aoPressionar: () {
+                                setState(() {
+                                  if (idade > 0) {
+                                    idade--;
+                                  } else {
+                                    idade = 0;
+                                  }
+                                });
+                              },
+                            ),
+                            SizedBox(width: 10.0),
+                            BotaoAredondado(
+                              icone: Icons.add,
+                              aoPressionar: () {
+                                setState(() {
+                                  idade++;
+                                });
+                              },
+                            ),
+                          ],
+                        )
                       ],
                     ),
                   ),
